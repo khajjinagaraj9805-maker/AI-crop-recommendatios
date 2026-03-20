@@ -29,7 +29,7 @@ init_db()
 # ---------------- LOAD CROP MODEL ----------------
 
 import os
-API_KEY = os.environ.get("OPENWEATHER_API_KEY", "f9b3ac6cbb182640a1c42cde4c7c8953")
+API_KEY = os.environ.get("OPENWEATHER_API_KEY")
 
 try:
     base_dir = os.path.dirname(os.path.abspath(__file__))
