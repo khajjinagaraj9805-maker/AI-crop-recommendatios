@@ -4,6 +4,7 @@ import numpy as np
 import requests
 import sqlite3
 import traceback
+import os
 
 app = Flask(__name__)
 app.secret_key = "secret123"
@@ -32,7 +33,7 @@ try:
 except:
     model, le = None, None
 
-API_KEY = "f9b3ac6cbb182640a1c42cde4c7c8953"
+API_KEY = os.environ.get("f9b3ac6cbb182640a1c42cde4c7c8953")
 
 fertilizer_tips = {
     "rice": "Use Urea, DAP and MOP for better yield.",
