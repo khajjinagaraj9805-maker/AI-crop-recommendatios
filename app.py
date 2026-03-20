@@ -27,13 +27,18 @@ def init_db():
 init_db()
 
 # ---------------- LOAD CROP MODEL ----------------
+
+import os
+API_KEY = os.environ.get("OPENWEATHER_API_KEY", "f9b3ac6cbb182640a1c42cde4c7c8953")
+
 try:
-    model = load("model.pkl")
-    le = load("label_encoder.pkl")
-except:
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    model = load(os.path.join(base_dir, "model.pkl"))
+    le = load(os.path.join(base_dir, "label_encoder.pkl"))
+except Exception as e:
+    print(f"Model loading error: {e}")
     model, le = None, None
 
-API_KEY = os.environ.get("f9b3ac6cbb182640a1c42cde4c7c8953")
 
 fertilizer_tips = {
     "rice": "Use Urea, DAP and MOP for better yield.",
