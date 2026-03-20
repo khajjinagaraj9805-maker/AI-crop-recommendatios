@@ -29,14 +29,17 @@ init_db()
 # ---------------- LOAD CROP MODEL ----------------
 
 import os
+# ---------------- LOAD CROP MODEL ----------------
 API_KEY = os.environ.get("OPENWEATHER_API_KEY")
 
+base_dir = os.path.dirname(os.path.abspath(__file__))
+
 try:
-    base_dir = os.path.dirname(os.path.abspath(__file__))
     model = load(os.path.join(base_dir, "model.pkl"))
     le = load(os.path.join(base_dir, "label_encoder.pkl"))
+    print("✅ Model loaded!")
 except Exception as e:
-    print(f"Model loading error: {e}")
+    print(f"❌ Model error: {e}")
     model, le = None, None
 
 
